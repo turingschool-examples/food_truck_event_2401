@@ -1,44 +1,5 @@
 # Food Truck Event
 
-## Instructor Setup Instructions
-
-In order to run the spec harness, first create a new directory with a students.txt file
-
-In students.txt, put a list of your students Github handles. For example:
-
-```plaintext
-aziobrow
-dionew1
-memcmahon
-s-espinosa
-```
-
-From the root of the directory you created with the students.txt file at the root level, run the following script in your terminal, replacing <repository_name> with the name of the challenge repo:
-
-```bash
-for i in `cat students.txt`; do
-  git clone git@github.com:$i/<repository_name> $i
-  pushd $i
-  git remote add turing git@github.com:turingschool-examples/<repository_name>
-  git pull --rebase turing harness
-  rspec harness
-  echo
-  echo
-  read -p 'Press Enter to continue'
-  popd
-done
-```
-
-For each student, you will need to create or :q out of a merge commit message!
-
-## Instructions
-
-* Fork this Repository
-* Clone your forked repo to your computer.
-* Complete the activity below.
-* Push your solution to your forked repo
-* Submit a pull request from your repository to this repository
-  * Put your name in your PR!
 
 ## Iteration 1 - Items & FoodTrucks
 
