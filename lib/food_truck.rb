@@ -21,8 +21,10 @@ class FoodTruck
   end
 
   def items_list
-    @inventory.map do |item, _|
-      item.name
-    end
+    @inventory.keys
+  end
+
+  def list_of_item_names
+    items_list.map(&:name)
   end
 end
