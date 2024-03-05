@@ -16,4 +16,14 @@ class Event
         end
     end
 
+    def food_trucks_that_sell(item)
+        trucks_selling_item = Array.new
+        @food_trucks.each do |food_truck|   # This could probably be refactored using map - I was experimenting with it :)
+            if food_truck.inventory.include?(item)
+                trucks_selling_item << food_truck
+            end
+        end
+        trucks_selling_item
+    end
+
 end
