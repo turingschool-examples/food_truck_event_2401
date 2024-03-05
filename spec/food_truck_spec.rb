@@ -45,6 +45,14 @@ RSpec.describe FoodTruck do
     end
 
     it "can calculate a food trucks potential revenue" do
+      @food_truck1.stock(@item1, 35)
+      @food_truck1.stock(@item2, 7)
+
+      @food_truck2.stock(@item4, 50)
+      @food_truck2.stock(@item3, 25)
+
+      @food_truck3.stock(@item1, 65)
+
       expect(@food_truck1.potential_revenue).to eq(148.75)
       expect(@food_truck2.potential_revenue).to eq(345.00)
       expect(@food_truck3.potential_revenue).to eq(243.75)
