@@ -26,18 +26,16 @@ class Event
     @food_trucks.flat_map(&:in_stock_items_list).uniq
   end
 
-  # def total_inventory
-  #   inventory = Hash.new { |hash, key| hash[key] = {}}
-  #   @food_trucks.each do |truck|
-  #     truck.inventory.each do |item, amount|
-  #       inventory[item] = {
-  #         quantity: amount,
-  #         food_trucks: food_trucks_that_sell(item)
-  #       }
-  #     end
-  #   end
-  #   inventory
-  # end
+  def total_inventory
+    inventory = Hash.new { |hash, key| hash[key] = {}}
+    list_all_items.each do |item|
+      inventory[item] = {
+        quantity: total_stock(item),
+        food_trucks: food_trucks_that_sell(item)
+      }
+    end
+    inventory
+  end
 
   def total_stock(item)
     @food_trucks.sum do |truck|
