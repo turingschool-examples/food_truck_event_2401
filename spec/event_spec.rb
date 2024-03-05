@@ -14,4 +14,9 @@ RSpec.describe Event do
         expect(event).to be_a Event
     end
 
+    it "Event has a name" do
+        event = Event.new("South Pearl Street Farmers Market")
+        expect(event.name).to eq "South Pearl Street Farmers Market"
+    end
+
 end
