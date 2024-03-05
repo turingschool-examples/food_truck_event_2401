@@ -64,7 +64,7 @@ describe Event do
     @food_truck2.stock(@item4, 25)
     @food_truck3.stock(@item1, 65)
 
-    expected = ["Apple Pie (Slice)", "Banana Nice Cream", "Peach-Raspberry Nice Cream", "Peach Pie (Slice)"]
+    expected = ["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"]
     expect(@event.sorted_item_list).to eq expected
   end
 end
