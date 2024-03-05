@@ -95,7 +95,7 @@ RSpec.describe Event do
       @event.add_food_truck(@food_truck2)    
       @event.add_food_truck(@food_truck3)
 
-      expect(@event.sorted_item_list).to eq(["Apple Pie (Slice)", "Peach Pie (Slice)", "Banana Nice Cream", "Peach-Raspberry Nice Cream", "Peach Pie (Slice)"])
+      expect(@event.sorted_item_list).to eq(["Apple Pie (Slice)" , "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"])
     end
 
     it 'has overstock items' do 
