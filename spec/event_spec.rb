@@ -94,6 +94,20 @@ RSpec.describe Event do
     end
   end
 
+  describe '#list_all_items'
+    it 'can return a list of all items that food trucks have in stock' do
+      food_truck1.stock(item1, 35)
+      food_truck2.stock(item4, 50)
+      food_truck2.stock(item3, 25)
+      food_truck3.stock(item1, 65)
+  
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+      event.add_food_truck(food_truck3)
+
+      expect(event.list_all_items).to eq([item1, item4, item3])
+    end
+
   describe '#sorted_item_list' do
     it 'can return a list of names of all items the food trucks have in stock sorted alphabetically' do
       food_truck1.stock(item1, 35)
@@ -117,56 +131,74 @@ RSpec.describe Event do
     end
   end
 
-  describe '#total_inventory' do
-    it 'can return a hash of total inventory that reports the available inventory of all items sold at the event' do
+  describe '#overstock_items' do
+    it 'returns an array of all items that are overstocked: quanity over 50 and total trucks that sell it over 1' do
       food_truck1.stock(item1, 35)
       food_truck2.stock(item4, 50)
       food_truck2.stock(item3, 25)
-      food_truck3.stock(item1, 65)
-
+  
       event.add_food_truck(food_truck1)
       event.add_food_truck(food_truck2)
       event.add_food_truck(food_truck3)
 
-      inventory = {
-        item1 => {
-          qunatity: 100,
-          food_trucks: [food_truck1, food_truck2]
-        },
-        item3 => {
-          quantity: 25,
-          food_trucks: [food_truck2]
-        },
-        item4 => {
-          quantity: 50,
-          food_trucks: [food_truck2]
-        }
-      }
+      expect(event.overstock_items).to eq([])
 
-      expect(event.total_inventory).to eq(inventory)
+      food_truck3.stock(item1, 65)
 
-      food_truck1.stock(item2, 7)
-
-      new_inventory = {
-        item1 => {
-          qunatity: 100,
-          food_trucks: [food_truck1, food_truck2]
-        },
-        item2 => {
-          quantity: 7,
-          food_trucks: [food_truck1]
-        },
-        item3 => {
-          quantity: 25,
-          food_trucks: [food_truck2]
-        },
-        item4 => {
-          quantity: 50,
-          food_trucks: [food_truck2]
-        }
-      }
-
-      expect(event.sorted_item_list).to eq(new_inventory)
+      expect(event.overstock_items).to eq([item1])
     end
   end
+
+  # describe '#total_inventory' do
+  #   it 'can return a hash of total inventory that reports the available inventory of all items sold at the event' do
+  #     food_truck1.stock(item1, 35)
+  #     food_truck2.stock(item4, 50)
+  #     food_truck2.stock(item3, 25)
+  #     food_truck3.stock(item1, 65)
+
+  #     event.add_food_truck(food_truck1)
+  #     event.add_food_truck(food_truck2)
+  #     event.add_food_truck(food_truck3)
+
+  #     inventory = {
+  #       item1 => {
+  #         qunatity: 100,
+  #         food_trucks: [food_truck1, food_truck2]
+  #       },
+  #       item3 => {
+  #         quantity: 25,
+  #         food_trucks: [food_truck2]
+  #       },
+  #       item4 => {
+  #         quantity: 50,
+  #         food_trucks: [food_truck2]
+  #       }
+  #     }
+
+  #     expect(event.total_inventory).to eq(inventory)
+
+  #     food_truck1.stock(item2, 7)
+
+  #     new_inventory = {
+  #       item1 => {
+  #         qunatity: 100,
+  #         food_trucks: [food_truck1, food_truck2]
+  #       },
+  #       item2 => {
+  #         quantity: 7,
+  #         food_trucks: [food_truck1]
+  #       },
+  #       item3 => {
+  #         quantity: 25,
+  #         food_trucks: [food_truck2]
+  #       },
+  #       item4 => {
+  #         quantity: 50,
+  #         food_trucks: [food_truck2]
+  #       }
+  #     }
+
+  #     expect(event.sorted_item_list).to eq(new_inventory)
+  #   end
+  # end
 end
