@@ -18,4 +18,12 @@ class FoodTruck
         end
     end
 
+    def potential_revenue
+        sum = 0
+        @inventory.each do |item, value|
+            sum += item.price * value
+        end
+        sum
+    end
+
 end
