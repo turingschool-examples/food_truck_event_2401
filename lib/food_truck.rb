@@ -19,4 +19,10 @@ class FoodTruck
       item.price * quantity
     end
   end
+
+  def items_list
+    @inventory.map do |item, _|
+      item.name
+    end
+  end
 end
