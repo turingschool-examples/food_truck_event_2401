@@ -118,6 +118,10 @@ RSpec.describe Event do
       @event.add_food_truck(@food_truck3)
 
       expect(@event.overstock_items).to eq([@item1])
+
+      @food_truck3.stock(@item4, 50) 
+
+      expect(@event.overstock_items).to eq([@item1, @item4])
     end
   end
 end
