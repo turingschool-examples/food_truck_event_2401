@@ -57,7 +57,7 @@ RSpec.describe Event do
       food_truck2.stock(item4, 50)
       food_truck2.stock(item3, 25)
       food_truck3.stock(item1, 65)
-
+  
       event.add_food_truck(food_truck1)
       event.add_food_truck(food_truck2)
       event.add_food_truck(food_truck3)
@@ -69,6 +69,28 @@ RSpec.describe Event do
       item4_trucks = event.food_trucks_that_sell(item4)
 
       expect(item4_trucks).to eq([food_truck2])
+    end
+
+    it 'will not list food trucks that no longer have that item in stock' do
+      food_truck1.stock(item1, 35)
+      food_truck1.stock(item2, 7)
+      food_truck2.stock(item4, 50)
+      food_truck2.stock(item3, 25)
+      food_truck3.stock(item1, 65)
+  
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+      event.add_food_truck(food_truck3)
+
+      item1_trucks = event.food_trucks_that_sell(item1)
+
+      expect(item1_trucks).to eq([food_truck1, food_truck3])
+
+      food_truck3.stock(item1, 0)
+
+      new_item1_trucks = event.food_trucks_that_sell(item1)
+
+      expect(new_item1_trucks).to eq([food_truck1])
     end
   end
 end
