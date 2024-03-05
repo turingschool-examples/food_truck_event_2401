@@ -37,4 +37,38 @@ RSpec.describe Event do
       expect(event.food_trucks).to eq([food_truck1, food_truck2])
     end
   end
+
+  describe '#food_truck_names' do
+    it 'can list the names of all the food trucks' do
+      event.add_food_truck(food_truck1)
+
+      expect(event.food_truck_names).to eq(["Rocky Mountain Pies"])
+
+      event.add_food_truck(food_truck2)
+      
+      expect(event.food_truck_names).to eq(["Rocky Mountain Pies", "Ba-Nom-a-Nom"])
+    end
+  end
+
+  describe '#food_trucks_that_sell' do
+    it 'can list the food trucks that sell an item' do
+      food_truck1.stock(item1, 35)
+      food_truck1.stock(item2, 7)
+      food_truck2.stock(item4, 50)
+      food_truck2.stock(item3, 25)
+      food_truck3.stock(item1, 65)
+
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+      event.add_food_truck(food_truck3)
+
+      item1_trucks = event.food_trucks_that_sell(item1)
+
+      expect(item1_trucks).to eq([food_truck1, food_truck3])
+
+      item4_trucks = event.food_trucks_that_sell(item4)
+
+      expect(item4_trucks).to eq([food_truck2])
+    end
+  end
 end
