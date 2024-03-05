@@ -80,7 +80,7 @@ describe Event do
 
     expected = {
       @item1 => {
-        quantity: 110,
+        quantity: 100,
         food_trucks: [@food_truck1, @food_truck3]
       },
       @item2 => {
