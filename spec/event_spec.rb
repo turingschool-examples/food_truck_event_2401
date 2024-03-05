@@ -44,14 +44,14 @@ RSpec.describe Event do
   end
   
   describe '#add food trucks' do
-  it 'add  food truck' do
-    @event.add_food_truck(@food_truck1)    
-    @event.add_food_truck(@food_truck2)    
-    @event.add_food_truck(@food_truck3)
-    
-    expect(@event.food_trucks).to eq([@food_truck1, @food_truck2, @food_truck3])
-    expect(@event.food_truck_names).to eq(["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"])
-  end
+    it 'add  food truck' do
+      @event.add_food_truck(@food_truck1)    
+      @event.add_food_truck(@food_truck2)    
+      @event.add_food_truck(@food_truck3)
+      
+      expect(@event.food_trucks).to eq([@food_truck1, @food_truck2, @food_truck3])
+      expect(@event.food_truck_names).to eq(["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"])
+    end
   end
 
   describe '#food trucks that sell' do
@@ -96,6 +96,39 @@ RSpec.describe Event do
       @event.add_food_truck(@food_truck3)
 
       expect(@event.sorted_item_list).to eq(["Apple Pie (Slice)", "Peach Pie (Slice)", "Banana Nice Cream", "Peach-Raspberry Nice Cream", "Peach Pie (Slice)"])
+    end
+
+    it 'has overstock items' do 
+      @food_truck1.stock(@item1, 35)    
+      @food_truck1.stock(@item2, 7) 
+      @food_truck2.stock(@item4, 50)    
+      @food_truck2.stock(@item3, 25)
+      @food_truck3.stock(@item1, 65)
+      @event.add_food_truck(@food_truck1)    
+      @event.add_food_truck(@food_truck2)    
+      @event.add_food_truck(@food_truck3)
+
+      expect(@event.total_inventory).to eq({
+          @item1 => {
+            amount: 100,
+            food_trucks: [@food_truck1, @food_truck3]
+          },
+          @item2 => {
+            amount: 7,
+            food_trucks: [@food_truck1]
+          },
+          @item3 => {
+            amount: 25,
+            food_trucks: [@food_truck2]
+          },
+          @item4 => {
+            amount: 50,
+            food_trucks: [@food_truck2]
+          }
+          
+        })
+          
+
     end
   end 
 end

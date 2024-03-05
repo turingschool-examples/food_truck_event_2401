@@ -29,4 +29,23 @@ class Event
       end.uniq.sort
     end
   end
+
+  def total_inventory
+    amount_of_items = Hash.new { |hash, key| hash[key] = {amount: 0, food_trucks: []}}
+    @food_trucks.each do |food_truck| 
+      food_truck.inventory.each do |item, amount|
+        amount_of_items[item][:amount] += amount
+        amount_of_items[item][:food_trucks] << food_truck
+      end
+    end
+    amount_of_items
+  end
+
+  # def overstock_items
+  #   @food_trucks.each do |food_truck|
+  #     food_truck.inventory.each do |item| 
+  #       if item > 50 && 
+  #     end
+  #   end
+  # end
 end
