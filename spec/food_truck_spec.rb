@@ -9,6 +9,7 @@ RSpec.describe FoodTruck do
   describe '#initialize' do
     it 'has attributes' do
       expect(@food_truck.name).to eq("Rocky Mountain Pies")
+      expect(@food_truck.inventory).to eq({})
     end
   end
 end
