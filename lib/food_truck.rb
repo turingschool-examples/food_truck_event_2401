@@ -6,9 +6,13 @@ class FoodTruck
         @inventory = Hash.new(0)
     end
 
+    def stock(item, quantity)
+        @inventory[item] += quantity
+    end
+
     def check_stock(item)
         if @inventory.include?(item)
-            @inventory[:item]
+            @inventory[item]
         else
             return 0
         end
