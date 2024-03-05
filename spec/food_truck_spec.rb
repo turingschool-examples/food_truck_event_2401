@@ -10,6 +10,7 @@ RSpec.describe FoodTruck do
     it 'has attributes' do
       expect(@food_truck.name).to eq("Rocky Mountain Pies")
       expect(@food_truck.inventory).to eq({})
+      expect(@food_truck.check_stock(@item1)).to eq(0)
     end
   end
 end
