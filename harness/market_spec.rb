@@ -159,7 +159,7 @@ RSpec.describe 'Event Spec Harness' do
 
   describe 'Iteration 4' do
     it '13. Event #date' do
-      Date.expects(:today).returns(Date.new(2020, 02, 12))
+      allow(Date).to receive(:today).and_return(Date.new(2020, 02, 12))
       event = Event.new("South Pearl Street Farmers Market")
 
       expect(event).to respond_to(:date).with(0).argument
