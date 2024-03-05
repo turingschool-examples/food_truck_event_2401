@@ -20,11 +20,15 @@ class FoodTruck
     end
   end
 
-  def items_list
-    @inventory.keys
+  def in_stock_items_list
+    in_stock = []
+    @inventory.each do |item, quantity|
+      in_stock << item if quantity > 0
+    end
+    in_stock
   end
 
   def list_of_item_names
-    items_list.map(&:name)
+    in_stock_items_list.map(&:name)
   end
 end
