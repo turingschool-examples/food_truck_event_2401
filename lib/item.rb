@@ -9,5 +9,4 @@ class Item
     def price_formatter(price_string)
         price_string.delete("$").to_f
     end
-
 end

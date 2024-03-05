@@ -8,7 +8,6 @@ RSpec.configure do |config|
 end
 
 RSpec.describe Event do
-
     it "Event exists" do
         event = Event.new("South Pearl Street Farmers Market")
         expect(event).to be_a Event
@@ -139,5 +138,4 @@ RSpec.describe Event do
 
         expect(event.overstock_items).to eq [item1]
     end
-
 end

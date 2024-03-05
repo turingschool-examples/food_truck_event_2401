@@ -76,5 +76,4 @@ class Event
         end
         overstock_items
     end
-
 end

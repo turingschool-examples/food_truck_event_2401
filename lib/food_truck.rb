@@ -25,5 +25,4 @@ class FoodTruck
         end
         sum
     end
-
 end
