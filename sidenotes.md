@@ -13,23 +13,3 @@ A `Event` is responsible for keeping track of `FoodTruck`s. It should have a met
 Additionally, the `Event` should have a method called `food_trucks_that_sell` that takes an argument of an item represented as a `String`. It will return a list of `FoodTruck`s that have that item in stock.
 
 Use TDD to create a `Event` class that responds to the following interaction pattern:
-
-```ruby
-
-pry(main)> event.food_truck_names
-#=> ["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"]
-
-pry(main)> event.food_trucks_that_sell(item1)
-#=> [#<FoodTruck:ONE>, #<FoodTruck:THREE>]
-
-pry(main)> event.food_trucks_that_sell(item4)
-#=> [#<FoodTruck:TWO>]
-
-pry(main)> food_truck1.potential_revenue
-#=> 148.75
-
-pry(main)> food_truck2.potential_revenue
-#=> 345.00
-
-pry(main)> food_truck3.potential_revenue
-#=> 243.75  
