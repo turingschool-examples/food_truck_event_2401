@@ -91,25 +91,25 @@ RSpec.describe Event do
         item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
 
         food_truck1.stock(item1, 50)    
-        food_truck1.stock(item2, 30) 
+        food_truck1.stock(item2, 30)
+
         food_truck2.stock(item1, 50)    
 
         event.add_food_truck(food_truck1)    
         event.add_food_truck(food_truck2)    
 
         inventory_hash = {
-            item1: {
+            item1 => {
                 quantity: 100,
                 food_trucks: [food_truck1, food_truck2]
             },
-            item2: {
+            item2 => {
                 quantity: 30,
                 food_trucks: [food_truck1]
             }
         }
 
-        expect(event.total_inventory).to be_a Hash
-        #expect(event.total_inventory).to eq inventory_hash
+        expect(event.total_inventory).to eq inventory_hash
     end
 
     it "Event can check for total quantity of specific item" do
