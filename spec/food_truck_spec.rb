@@ -8,4 +8,10 @@ RSpec.configure do |config|
 end
 
 RSpec.describe FoodTruck do
+
+    it "Food Truck exists" do
+        food_truck = FoodTruck.new("Rocky Mountain Pies")
+        expect(food_truck).to be_a FoodTruck
+    end
+
 end
