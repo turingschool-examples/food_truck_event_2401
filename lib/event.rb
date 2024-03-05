@@ -19,4 +19,10 @@ class Event
       food_truck.check_stock(item).positive?
     end
   end
+
+  def sorted_item_list
+    @food_trucks.map do |food_truck|
+      food_truck.inventory.keys.map(&:name)
+    end.flatten.uniq.sort
+  end
 end
