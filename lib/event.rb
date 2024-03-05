@@ -26,8 +26,8 @@ class Event
     @food_trucks.flat_map do |food_truck|
       food_truck.inventory.map do |item, amount| 
        item.name
-      end.uniq.sort
-    end
+      end
+    end.uniq.sort
   end
 
   def total_inventory
