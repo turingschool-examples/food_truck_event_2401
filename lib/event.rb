@@ -14,6 +14,5 @@ class Event
     @food_trucks.map do |food_truck|
       food_truck.name
     end
-
   end
 end
