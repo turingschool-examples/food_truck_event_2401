@@ -15,4 +15,8 @@ class FoodTruck
     inventory[item] += quantity
   end
 
+  def potential_revenue
+    # all item prices times the quantity of items
+  end
+
 end

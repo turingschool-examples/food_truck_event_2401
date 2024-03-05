@@ -26,7 +26,7 @@ RSpec.describe Event do
   end
 
   describe "#methods" do
-    it "can add food trucks with stocked items to an event" do
+    it "can add food trucks that sell stocked items to an event" do
       @food_truck1.stock(@item1, 35)
       @food_truck1.stock(@item2, 7)
 
@@ -45,9 +45,10 @@ RSpec.describe Event do
       expect(@event.food_trucks_that_sell(@item1)).to eq([@food_truck1, @food_truck3])
       expect(@event.food_trucks_that_sell(@item4)).to eq([@food_truck2])
 
-      expect(@food_truck1.potential_revenue).to eq(148.75)
-      expect(@food_truck2.potential_revenue).to eq(345.00)
-      expect(@food_truck3.potential_revenue).to eq(243.75)
+      # Below was moved to food_truck:
+      # expect(@food_truck1.potential_revenue).to eq(148.75)
+      # expect(@food_truck2.potential_revenue).to eq(345.00)
+      # expect(@food_truck3.potential_revenue).to eq(243.75)
     end
 
   end
