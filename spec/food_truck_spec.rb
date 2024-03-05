@@ -9,7 +9,7 @@ RSpec.describe FoodTruck do
 
   describe "#initialize" do
   it "exists" do
-    expect(@food_truck).to eq(FoodTruck)
+    expect(@food_truck).to be_a(FoodTruck)
   end
 
   it "has attributes" do
