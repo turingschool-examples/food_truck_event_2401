@@ -52,4 +52,16 @@ class Event
   def date
     Date.today.strftime("%d/%m/%Y")
   end
+
+  def sell(item, quantity)
+    return false if total_inventory[item][:quantity] < quantity
+
+    total_inventory[item][:food_trucks].each do |food_truck|
+      amt_sold_from_truck = [food_truck.check_stock(item), quantity].min
+      food_truck.inventory[item] -= amt_sold_from_truck
+      quantity -= amt_sold_from_truck
+    end
+
+    true
+  end
 end
