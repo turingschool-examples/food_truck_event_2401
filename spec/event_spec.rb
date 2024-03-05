@@ -153,9 +153,9 @@ RSpec.describe Event do
           food_trucks: [food_truck1, food_truck2]
         },
         item2 => {
-          quantity: 7
+          quantity: 7,
           food_trucks: [food_truck1]
-        }
+        },
         item3 => {
           quantity: 25,
           food_trucks: [food_truck2]
