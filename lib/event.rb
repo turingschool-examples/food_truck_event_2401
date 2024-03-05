@@ -48,4 +48,8 @@ class Event
     end
     overstock_items_list
   end
+
+  def date
+    Date.today.strftime("%d/%m/%Y")
+  end
 end
