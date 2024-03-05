@@ -1,0 +1,20 @@
+# Total Inventory Return Value Formatted
+
+{
+    #<Item:0x0000000102df4938 @name="Peach Pie (Slice)", @price=3.75> => { 
+        :quantity => 100, 
+        :food_trucks => [#<FoodTruck:0x0000000102df4b40 @name="Rocky Mountain Pies", @inventory={#<Item:0x0000000102df4938 @name="Peach Pie (Slice)", @price=3.75>=>35, #<Item:0x0000000102df4618 @name="Apple Pie (Slice)", @price=2.5>=>7}>, #<FoodTruck:0x0000000102defbe0 @name="Palisade Peach Shack", @inventory={#<Item:0x0000000102df4938 @name="Peach Pie (Slice)", @price=3.75>=>65}>]
+    }, 
+    #<Item:0x0000000102df4618 @name="Apple Pie (Slice)", @price=2.5> => {
+        :quantity => 7, 
+        :food_trucks => [#<FoodTruck:0x0000000102df4b40 @name="Rocky Mountain Pies", @inventory={#<Item:0x0000000102df4938 @name="Peach Pie (Slice)", @price=3.75>=>35, #<Item:0x0000000102df4618 @name="Apple Pie (Slice)", @price=2.5>=>7}>]
+    }, 
+    #<Item:0x0000000102defe88 @name="Banana Nice Cream", @price=4.25> => {
+        :quantity => 50, 
+        :food_trucks => [#<FoodTruck:0x0000000102defca8 @name="Ba-Nom-a-Nom", @inventory={#<Item:0x0000000102defe88 @name="Banana Nice Cream", @price=4.25>=>50,  #<Item:0x0000000102df4230 @name="Peach-Raspberry Nice Cream", @price=5.3>=>25}>]
+    }, 
+    #<Item:0x0000000102df4230 @name="Peach-Raspberry Nice Cream", @price=5.3> => {
+        :quantity => 25, 
+        food_trucks => [#<FoodTruck:0x0000000102defca8 @name="Ba-Nom-a-Nom", @inventory={#<Item:0x0000000102defe88 @name="Banana Nice Cream", @price=4.25>=>50, #<Item:0x0000000102df4230 @name="Peach-Raspberry Nice Cream", @price=5.3>=>25}>]
+    }
+}
