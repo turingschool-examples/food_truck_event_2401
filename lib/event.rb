@@ -19,6 +19,6 @@ class Event
   end
 
   def sorted_item_list
-    @food_trucks.flat_map(&:items_list).uniq.sort
+    @food_trucks.flat_map(&:list_of_item_names).uniq.sort
   end
 end
