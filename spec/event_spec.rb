@@ -42,4 +42,14 @@ RSpec.describe Event do
       expect(@food_truck3.inventory).to eq({@item1 => 65})
     end
   end
+
+  describe '#add food trucks' do
+    it 'add  food truck' do
+      @event.add_food_truck(@food_truck1)    
+      @event.add_food_truck(@food_truck2)    
+      @event.add_food_truck(@food_truck3)
+
+      expect(@event.food_trucks).to eq([@food_truck1, @food_truck2, @food_truck3])
+    end
+  end
 end
