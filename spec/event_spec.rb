@@ -74,6 +74,27 @@ RSpec.describe Event do
         "Peach-Raspberry Nice Cream"
       ])
     end
+
+    it "can list total inventory" do
+      expect(@event.total_inventory).to eq({
+        @item1 => {
+          quantity: 100,
+          food_trucks: [@food_truck1, @food_truck3]
+        },
+        @item2 => {
+          quantity: 7,
+          food_trucks: [@food_truck1]
+        },
+        @item3 => {
+          quantity: 25,
+          food_trucks: [@food_truck2]
+        },
+        @item4 => {
+          quantity: 50,
+          food_trucks: [@food_truck2]
+        }
+      })
+    end
   end
 end
 # rubocop:enable Metrics/BlockLength
