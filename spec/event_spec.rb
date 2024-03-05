@@ -99,4 +99,18 @@ describe Event do
 
     expect(@event.total_inventory).to eq expected
   end
+
+  it 'can return an array of overstocked items' do
+    @event.add_food_truck(@food_truck1)
+    @event.add_food_truck(@food_truck2)
+    @event.add_food_truck(@food_truck3)
+    @food_truck1.stock(@item1, 35)
+    @food_truck1.stock(@item2, 7)
+    @food_truck2.stock(@item3, 50)
+    @food_truck2.stock(@item4, 25)
+    @food_truck3.stock(@item4, 5)
+    @food_truck3.stock(@item1, 65)
+
+    expect(@event.overstock_items).to eq [@item1]
+  end
 end
