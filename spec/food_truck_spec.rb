@@ -74,14 +74,26 @@ RSpec.describe FoodTruck do
   end
 
   describe '#items_list' do
-    it 'can return a list of all of its items names' do
+    it 'can return a list of all of its items' do
       food_truck1.stock(item1, 35)
 
-      expect(food_truck1.items_list).to eq(['Peach Pie (Slice)'])
+      expect(food_truck1.items_list).to eq([item1])
 
       food_truck1.stock(item2, 7)
 
-      expect(food_truck1.items_list).to eq(['Peach Pie (Slice)', 'Apple Pie (Slice)'])
+      expect(food_truck1.items_list).to eq([item1, item2])
+    end
+
+    describe '#list_of_item_names' do
+      it 'can return a list of all of its items names' do
+        food_truck1.stock(item1, 35)
+
+        expect(food_truck1.list_of_item_names).to eq(['Peach Pie (Slice)'])
+
+        food_truck1.stock(item2, 7)
+
+        expect(food_truck1.list_of_item_names).to eq(['Peach Pie (Slice)', 'Apple Pie (Slice)'])
+      end
     end
   end
 end
