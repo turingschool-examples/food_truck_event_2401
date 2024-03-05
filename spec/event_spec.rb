@@ -9,7 +9,7 @@ describe Event do
     @event = Event.new("South Pearl Street Farmers Market")
     @food_truck1 = FoodTruck.new("Rocky Mountain Pies")
     @food_truck2 = FoodTruck.new("Ba-Nom-a-Nom")
-    @food_truck2 = FoodTruck.new("Palisade Peach Shack")
+    @food_truck3 = FoodTruck.new("Palisade Peach Shack")
     @item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
     @item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
     @item3 = Item.new({name: 'Peach-Raspberry Nice Cream', price: '$5.30'})
@@ -35,8 +35,8 @@ describe Event do
   it 'can return a list of all food truck names at an event' do
     @event.add_food_truck(@food_truck1)
     @event.add_food_truck(@food_truck2)
+    @event.add_food_truck(@food_truck3)
   
-    expect(@event.food_truck_names).to eq 
-
+    expect(@event.food_truck_names).to eq ["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"]
   end
 end
