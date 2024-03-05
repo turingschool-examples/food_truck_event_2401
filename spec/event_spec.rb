@@ -50,7 +50,7 @@ describe Event do
     @food_truck2.stock(@item4, 25)
     @food_truck3.stock(@item1, 65)
 
-    expect(@event.food_trucks_that_sell(@item1)).to eq [@food_truck1, @food_truck2]
+    expect(@event.food_trucks_that_sell(@item1)).to eq [@food_truck1, @food_truck3]
 
 
   end
