@@ -49,7 +49,6 @@ class Event
                 end
             end
         end
-        item_list
         item_list.each do |item|
             inventory[item] = {
                 quantity: total_quantity_of_item(item),
@@ -67,16 +66,6 @@ class Event
         end
         item_quantity
     end
-
-
-
-
-
-
-
-
-
-
 
     # def overstock_items
     #     list_of_overstock_items = Array.new

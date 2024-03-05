@@ -105,7 +105,7 @@ RSpec.describe Event do
         expect(event.total_inventory).to be_a Hash
     end
 
-    it "Event can check for total quantity of item" do
+    it "Event can check for total quantity of specific item" do
         event = Event.new("South Pearl Street Farmers Market")
         food_truck1 = FoodTruck.new("Rocky Mountain Pies")
         food_truck2 = FoodTruck.new("Ba-Nom-a-Nom")
