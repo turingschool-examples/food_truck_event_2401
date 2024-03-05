@@ -95,6 +95,18 @@ RSpec.describe Event do
         }
       })
     end
+
+    it "can list overstocked items" do
+      expect(@event.overstock_items).to eq([@item1])
+
+      @food_truck1.stock(@item3, 30)
+
+      expect(@event.overstock_items).to eq([@item1, @item3])
+
+      @food_truck2.stock(@item4, 20)
+
+      expect(@event.overstock_items).to eq([@item1, @item3])
+    end
   end
 end
 # rubocop:enable Metrics/BlockLength
