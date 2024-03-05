@@ -25,4 +25,16 @@ RSpec.describe Event do
       expect(event.food_trucks).to eq([])
     end
   end
+
+  describe '#add_food_truck' do
+    it 'can add food trucks to its list of food trucks' do
+      event.add_food_truck(food_truck1)
+
+      expect(event.food_trucks).to eq([food_truck1])
+
+      event.add_food_truck(food_truck2)
+      
+      expect(event.food_trucks).to eq([food_truck1, food_truck2])
+    end
+  end
 end
