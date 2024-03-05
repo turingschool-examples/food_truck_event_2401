@@ -3,8 +3,7 @@ class Item
 
   def initialize(attributes)
     @name = attributes[:name]
-    @price = attributes[:price].gsub("$", "").to_i
+    @price = attributes[:price].gsub("$", "").to_f
   end
-
 
 end
