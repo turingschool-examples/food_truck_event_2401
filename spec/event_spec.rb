@@ -52,7 +52,19 @@ describe Event do
 
     expect(@event.food_trucks_that_sell(@item1)).to eq [@food_truck1, @food_truck3]
     expect(@event.food_trucks_that_sell(@item4)).to eq [@food_truck2]
+  end
 
-    
+  it 'can return a sorted list of items at an event' do
+    @event.add_food_truck(@food_truck1)
+    @event.add_food_truck(@food_truck2)
+    @event.add_food_truck(@food_truck3)
+    @food_truck1.stock(@item1, 35)
+    @food_truck1.stock(@item2, 7)
+    @food_truck2.stock(@item3, 50)
+    @food_truck2.stock(@item4, 25)
+    @food_truck3.stock(@item1, 65)
+
+    expected = ["Apple Pie (Slice)", "Banana Nice Cream", "Peach-Raspberry Nice Cream", "Peach Pie (Slice)"]
+    expect(@event.sorted_item_list).to eq expected
   end
 end
