@@ -72,4 +72,16 @@ RSpec.describe FoodTruck do
       expect(food_truck2.potential_revenue).to eq(345.00)
     end
   end
+
+  describe '#items_list' do
+    it 'can return a list of all of its items names' do
+      food_truck1.stock(item1, 35)
+
+      expect(food_truck1.items_list).to eq(['Peach Pie (Slice)'])
+
+      food_truck1.stock(item2, 7)
+
+      expect(food_truck1.items_list).to eq(['Peach Pie (Slice)', 'Apple Pie (Slice)'])
+    end
+  end
 end
