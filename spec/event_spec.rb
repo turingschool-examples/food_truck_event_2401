@@ -16,5 +16,9 @@ describe Event do
 
   it 'can add food trucks to the event' do
     expect(@event.food_trucks).to eq []
+    
+    @event.add_food_truck(@food_truck)
+    
+    expect(@event.food_trucks).to eq [@food_truck]
   end
 end
