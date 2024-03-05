@@ -25,4 +25,15 @@ class Event
       food_truck.inventory.keys.map(&:name)
     end.flatten.uniq.sort
   end
+
+  def total_inventory
+    @food_trucks.each_with_object(Hash.new do |hash, key|
+      hash[key] = { quantity: 0, food_trucks: [] }
+    end) do |food_truck, inventory|
+      food_truck.inventory.each do |item, quantity|
+        inventory[item][:quantity] += quantity
+        inventory[item][:food_trucks] << food_truck
+      end
+    end
+  end
 end
