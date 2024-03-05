@@ -67,4 +67,36 @@ describe Event do
     expected = ["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"]
     expect(@event.sorted_item_list).to eq expected
   end
+
+  it 'can return a hash of total inventory at the event' do
+    @event.add_food_truck(@food_truck1)
+    @event.add_food_truck(@food_truck2)
+    @event.add_food_truck(@food_truck3)
+    @food_truck1.stock(@item1, 35)
+    @food_truck1.stock(@item2, 7)
+    @food_truck2.stock(@item3, 50)
+    @food_truck2.stock(@item4, 25)
+    @food_truck3.stock(@item1, 65)
+
+    expected = {
+      @item1 => {
+        quantity: 110,
+        food_trucks: [@food_truck1, @food_truck3]
+      },
+      @item2 => {
+        quantity: 7,
+        food_trucks: [@food_truck1]
+      },
+      @item3 => {
+        quantity: 50,
+        food_trucks: [@food_truck2]
+      },
+      @item4 => {
+        quantity: 25,
+        food_trucks: [@food_truck2]
+      }
+    }
+
+    expect(@event.total_inventory).to eq expected
+  end
 end
