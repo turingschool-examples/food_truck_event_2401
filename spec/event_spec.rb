@@ -121,6 +121,22 @@ RSpec.describe Event do
       allow(@event).to receive(:date).and_return(past_date)
       expect(@event.date).to eq("05/01/2005")
     end
+
+    it "can sell items" do
+      is_sold = @event.sell(@item1, 5)
+      expect(@food_truck1.check_stock(@item1)).to eq(30)
+      expect(@food_truck3.check_stock(@item1)).to eq(65)
+      expect(is_sold).to eq(true)
+
+      is_sold = @event.sell(@item1, 35)
+      expect(@food_truck1.check_stock(@item1)).to eq(0)
+      expect(@food_truck3.check_stock(@item1)).to eq(60)
+      expect(is_sold).to eq(true)
+
+      is_sold = @event.sell(@item1, 65)
+      expect(@food_truck3.check_stock(@item1)).to eq(60)
+      expect(is_sold).to eq(false)
+    end
   end
 end
 # rubocop:enable Metrics/BlockLength
