@@ -10,8 +10,7 @@ RSpec.describe Event do
   @item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
   @item3 = Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})
   @item4 = Item.new({name: "Banana Nice Cream", price: "$4.25"})
-
-end
+  end
 
   describe '#initialize' do
     it 'defaults' do
@@ -19,6 +18,7 @@ end
       expect(@event.food_trucks).to eq([])
     end
   end
+
   describe '#food truck 1' do
     it 'displays what is in the food truck' do
       @food_truck1.stock(@item1, 35)    
