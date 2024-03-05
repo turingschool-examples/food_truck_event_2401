@@ -163,56 +163,56 @@ RSpec.describe Event do
     end
   end
 
-  # describe '#total_inventory' do
-  #   it 'can return a hash of total inventory that reports the available inventory of all items sold at the event' do
-  #     food_truck1.stock(item1, 35)
-  #     food_truck2.stock(item4, 50)
-  #     food_truck2.stock(item3, 25)
-  #     food_truck3.stock(item1, 65)
+  describe '#total_inventory' do
+    it 'can return a hash of total inventory that reports the available inventory of all items sold at the event' do
+      food_truck1.stock(item1, 35)
+      food_truck2.stock(item4, 50)
+      food_truck2.stock(item3, 25)
+      food_truck3.stock(item1, 65)
 
-  #     event.add_food_truck(food_truck1)
-  #     event.add_food_truck(food_truck2)
-  #     event.add_food_truck(food_truck3)
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+      event.add_food_truck(food_truck3)
 
-  #     inventory = {
-  #       item1 => {
-  #         qunatity: 100,
-  #         food_trucks: [food_truck1, food_truck2]
-  #       },
-  #       item3 => {
-  #         quantity: 25,
-  #         food_trucks: [food_truck2]
-  #       },
-  #       item4 => {
-  #         quantity: 50,
-  #         food_trucks: [food_truck2]
-  #       }
-  #     }
+      inventory = {
+        item1 => {
+          quantity: 100,
+          food_trucks: [food_truck1, food_truck3]
+        },
+        item3 => {
+          quantity: 25,
+          food_trucks: [food_truck2]
+        },
+        item4 => {
+          quantity: 50,
+          food_trucks: [food_truck2]
+        }
+      }
 
-  #     expect(event.total_inventory).to eq(inventory)
+      expect(event.total_inventory).to eq(inventory)
 
-  #     food_truck1.stock(item2, 7)
+      food_truck1.stock(item2, 7)
 
-  #     new_inventory = {
-  #       item1 => {
-  #         qunatity: 100,
-  #         food_trucks: [food_truck1, food_truck2]
-  #       },
-  #       item2 => {
-  #         quantity: 7,
-  #         food_trucks: [food_truck1]
-  #       },
-  #       item3 => {
-  #         quantity: 25,
-  #         food_trucks: [food_truck2]
-  #       },
-  #       item4 => {
-  #         quantity: 50,
-  #         food_trucks: [food_truck2]
-  #       }
-  #     }
+      new_inventory = {
+        item1 => {
+          quantity: 100,
+          food_trucks: [food_truck1, food_truck3]
+        },
+        item2 => {
+          quantity: 7,
+          food_trucks: [food_truck1]
+        },
+        item3 => {
+          quantity: 25,
+          food_trucks: [food_truck2]
+        },
+        item4 => {
+          quantity: 50,
+          food_trucks: [food_truck2]
+        }
+      }
 
-  #     expect(event.sorted_item_list).to eq(new_inventory)
-  #   end
-  # end
+      expect(event.total_inventory).to eq(new_inventory)
+    end
+  end
 end
