@@ -67,19 +67,14 @@ class Event
         item_quantity
     end
 
-    # def overstock_items
-    #     list_of_overstock_items = Array.new
-    #     sorted_item_list.each do |item|
-    #         @food_trucks.each do |food_truck|
-    #             p food_truck
-    #             p item
-    #         end
-    #         p item
-    #         #if item 
-    #     end
-    #     # Return array of overstocked items
-    #     # An item is overstocked if sold by more than 1 food truck and total quantity is greater than 50 
-    #     list_of_overstock_items
-    # end
+    def overstock_items
+        overstock_items = Array.new
+        total_inventory.each do |item, item_info|
+            if item_info[:quantity] > 50 && item_info[:food_trucks].count > 1
+                overstock_items << item
+            end
+        end
+        overstock_items
+    end
 
 end

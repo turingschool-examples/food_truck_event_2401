@@ -87,22 +87,29 @@ RSpec.describe Event do
         event = Event.new("South Pearl Street Farmers Market")
         food_truck1 = FoodTruck.new("Rocky Mountain Pies")
         food_truck2 = FoodTruck.new("Ba-Nom-a-Nom")
-        food_truck3 = FoodTruck.new("Palisade Peach Shack")
         item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
         item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
-        item3 = Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})       
-        item4 = Item.new({name: "Banana Nice Cream", price: "$4.25"})
 
-        food_truck1.stock(item1, 35)    
-        food_truck1.stock(item2, 7) 
-        food_truck2.stock(item4, 50)    
-        food_truck2.stock(item3, 25)
-        food_truck3.stock(item1, 65)
+        food_truck1.stock(item1, 50)    
+        food_truck1.stock(item2, 30) 
+        food_truck2.stock(item1, 50)    
+
         event.add_food_truck(food_truck1)    
         event.add_food_truck(food_truck2)    
-        event.add_food_truck(food_truck3)
+
+        inventory_hash = {
+            item1: {
+                quantity: 100,
+                food_trucks: [food_truck1, food_truck2]
+            },
+            item2: {
+                quantity: 30,
+                food_trucks: [food_truck1]
+            }
+        }
 
         expect(event.total_inventory).to be_a Hash
+        #expect(event.total_inventory).to eq inventory_hash
     end
 
     it "Event can check for total quantity of specific item" do
@@ -117,6 +124,20 @@ RSpec.describe Event do
         event.add_food_truck(food_truck2) 
 
         expect(event.total_quantity_of_item(item1)).to eq 200
+    end
+
+    it "Event can check for overstock items" do
+        event = Event.new("South Pearl Street Farmers Market")
+        food_truck1 = FoodTruck.new("Rocky Mountain Pies")
+        food_truck2 = FoodTruck.new("Ba-Nom-a-Nom")
+        item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
+
+        food_truck1.stock(item1, 26)    
+        food_truck2.stock(item1, 26)
+        event.add_food_truck(food_truck1)    
+        event.add_food_truck(food_truck2) 
+
+        expect(event.overstock_items).to eq [item1]
     end
 
 end
