@@ -108,5 +108,19 @@ RSpec.describe Event do
       expect(@event.overstock_items).to eq([@item1, @item3])
     end
   end
+
+  describe "#sales at an event" do
+    before(:each) do
+      @event.add_food_truck(@food_truck1)
+      @event.add_food_truck(@food_truck2)
+      @event.add_food_truck(@food_truck3)
+    end
+
+    it "can provide a date" do
+      past_date = Date.new(2005, 1, 5).strftime("%d/%m/%Y")
+      allow(@event).to receive(:date).and_return(past_date)
+      expect(@event.date).to eq("05/01/2005")
+    end
+  end
 end
 # rubocop:enable Metrics/BlockLength
