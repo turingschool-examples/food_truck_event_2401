@@ -4,12 +4,13 @@ require './lib/event'
 
 RSpec.describe Event do
   before(:each) do
-  @event = Event.new("South Pearl Street Farmers Market") 
-  @food_truck1 = FoodTruck.new("Rocky Mountain Pies")
-  @item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
-  @item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
-  @item3 = Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})
-  @item4 = Item.new({name: "Banana Nice Cream", price: "$4.25"})
+    @event = Event.new("South Pearl Street Farmers Market") 
+    @food_truck1 = FoodTruck.new("Rocky Mountain Pies")
+    @item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
+    @item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
+    @item3 = Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})
+    @item4 = Item.new({name: "Banana Nice Cream", price: "$4.25"})
+    @food_truck2 = FoodTruck.new("Ba-Nom-a-Nom")
   end
 
   describe '#initialize' do
@@ -19,12 +20,19 @@ RSpec.describe Event do
     end
   end
 
-  describe '#food truck 1' do
-    it 'displays what is in the food truck' do
+  describe '#what is in food trucks' do
+    it 'displays what is in food truck 1' do
       @food_truck1.stock(@item1, 35)    
       @food_truck1.stock(@item2, 7) 
 
       expect(@food_truck1.inventory).to eq({@item1 => 35, @item2 => 7})
+    end
+
+    it 'displays what is in food truck 2' do 
+      @food_truck2.stock(@item4, 50)    
+      @food_truck2.stock(@item3, 25)
+
+      expect(@food_truck2.inventory).to eq({@item4 => 50, @item3 => 25})
     end
   end
 end
