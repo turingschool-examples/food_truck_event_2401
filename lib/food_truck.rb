@@ -11,7 +11,8 @@ class FoodTruck
   end
 
   def stock(item, quantity)
-    inventory[item] = quantity
+    inventory[item] ||= 0
+    inventory[item] += quantity
   end
 
 end
