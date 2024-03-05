@@ -131,6 +131,20 @@ RSpec.describe Event do
     end
   end
 
+  describe '#total_stock' do
+    it 'can return the total stock of an item from all food trucks' do
+      food_truck1.stock(item1, 35)
+      event.add_food_truck(food_truck1)
+
+      expect(event.total_stock(item1)).to eq(35)
+
+      food_truck3.stock(item1, 65)
+      event.add_food_truck(food_truck3)
+
+      expect(event.total_stock(item1)).to eq(100)
+    end
+  end
+
   describe '#overstock_items' do
     it 'returns an array of all items that are overstocked: quanity over 50 and total trucks that sell it over 1' do
       food_truck1.stock(item1, 35)
