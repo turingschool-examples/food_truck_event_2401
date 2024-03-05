@@ -50,6 +50,13 @@ RSpec.describe Event do
         "Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"
       ])
     end
+
+    it "can list the food trucks that sell an item" do
+      expect(@event.food_trucks_that_sell(@item1)).to eq([
+        @food_truck1, @food_truck3
+      ])
+      expect(@event.food_trucks_that_sell(@item4)).to eq([@food_truck2])
+    end
   end
 end
 # rubocop:enable Metrics/BlockLength
