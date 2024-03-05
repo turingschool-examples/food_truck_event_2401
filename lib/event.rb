@@ -1,7 +1,8 @@
 class Event
-  attr_reader :food_trucks
+  attr_reader :name, :food_trucks
 
-  def initialize
+  def initialize(name)
+    @name = name
     @food_trucks = []
   end
 
@@ -9,4 +10,10 @@ class Event
     @food_trucks << food_truck
   end
 
+  def food_truck_names
+    @food_trucks.map do |food_truck|
+      food_truck.name
+    end
+
+  end
 end
