@@ -105,5 +105,18 @@ RSpec.describe Event do
         expect(event.total_inventory).to be_a Hash
     end
 
+    it "Event can check for total quantity of item" do
+        event = Event.new("South Pearl Street Farmers Market")
+        food_truck1 = FoodTruck.new("Rocky Mountain Pies")
+        food_truck2 = FoodTruck.new("Ba-Nom-a-Nom")
+        item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
+
+        food_truck1.stock(item1, 100)    
+        food_truck2.stock(item1, 100)
+        event.add_food_truck(food_truck1)    
+        event.add_food_truck(food_truck2) 
+
+        expect(event.total_quantity_of_item(item1)).to eq 200
+    end
 
 end
